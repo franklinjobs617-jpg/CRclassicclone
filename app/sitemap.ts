@@ -17,8 +17,9 @@ const ROUTES = [
   { path: '/cookie-run-classic-reroll', lastModified: '2026-06-30', priority: 0.8 },
   { path: '/cookie-run-classic-meta', lastModified: '2026-06-30', priority: 0.8 },
   { path: '/cookie-run-classic-wiki', lastModified: '2026-06-30', priority: 0.8 },
-  { path: '/about', lastModified: '2026-07-03', priority: 0.5 },
-  { path: '/privacy', lastModified: '2026-07-03', priority: 0.3 },
+  { path: '/about', lastModified: '2026-07-09', priority: 0.5 },
+  { path: '/privacy', lastModified: '2026-07-09', priority: 0.3 },
+  { path: '/contact', lastModified: '2026-07-09', priority: 0.3 },
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
