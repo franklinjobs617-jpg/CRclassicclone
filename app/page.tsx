@@ -22,7 +22,7 @@ import {
   PRIMARY_NAV,
   SITE,
 } from '@/lib/data'
-import { Faq } from '@/components/blocks'
+import { Faq, UpdateBadge } from '@/components/blocks'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = pageMetadata({
@@ -56,6 +56,18 @@ const HOME_FAQ = [
   {
     q: 'Is CookieRun Classic free to play?',
     a: 'Yes. The game is free to download on the App Store and Google Play, with optional in-app purchases for crystals and cosmetics. You can also redeem free codes for crystals and coins.',
+  },
+  {
+    q: 'How is CookieRun Classic different from CookieRun Kingdom?',
+    a: 'Kingdom is a base-building and RPG-style game. Classic goes back to the original endless-runner format \u2014 shorter runs, score-based Leagues, and a simpler two-button control scheme, with Cookies, Pets and Treasures built around run performance instead of city management.',
+  },
+  {
+    q: 'Should I reroll when starting out?',
+    a: 'It depends on what you pull and how much time you are willing to spend rerolling. Our reroll guide covers what counts as a strong starting pull and the fastest way to check before committing.',
+  },
+  {
+    q: 'What should a new account prioritize first?',
+    a: 'Redeem every active code before spending starting crystals, then follow the beginner guide\u2019s first-week order \u2014 it is built around what gives the most account-wide value early rather than what looks flashiest.',
   },
   {
     q: 'How often do you update these guides?',
@@ -100,6 +112,7 @@ export default function HomePage() {
               priorities for CookieRun Classic. Pick the guide that matches
               what you are trying to do next.
             </p>
+            <UpdateBadge updated={SITE.lastSiteUpdate} className="mt-4" />
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/cookie-run-classic-codes"
@@ -150,6 +163,100 @@ export default function HomePage() {
           >
             Open wiki hub <ArrowRight className="size-4" />
           </Link>
+        </div>
+      </section>
+
+      {/* Where to start */}
+      <section className="mx-auto w-full max-w-6xl px-4 pt-12">
+        <h2 className="font-heading text-2xl font-700 text-foreground sm:text-3xl">
+          Where to start
+        </h2>
+        <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-foreground/90">
+          <p>
+            CookieRun Classic launched globally in June 2026, so most players
+            reading this are either brand new or still in their first few
+            weeks. What you need depends on where you are:
+          </p>
+          <p>
+            <strong>Brand new account:</strong> start with the{' '}
+            <Link
+              href="/cookie-run-classic-beginner-guide"
+              className="font-700 text-primary hover:underline"
+            >
+              beginner guide
+            </Link>{' '}
+            for the first-week priority order, then redeem every{' '}
+            <Link
+              href="/cookie-run-classic-codes"
+              className="font-700 text-primary hover:underline"
+            >
+              active code
+            </Link>{' '}
+            before you spend your starting crystals — codes are free and
+            expire, so there is no reason to leave them unclaimed.
+          </p>
+          <p>
+            <strong>Deciding whether to reroll:</strong> check the{' '}
+            <Link
+              href="/cookie-run-classic-reroll"
+              className="font-700 text-primary hover:underline"
+            >
+              reroll guide
+            </Link>{' '}
+            before you commit to your starting account — it is much easier to
+            reroll in the first few minutes than to fix a weak start later.
+          </p>
+          <p>
+            <strong>Choosing what to upgrade:</strong> the{' '}
+            <Link
+              href="/cookie-run-classic-tier-list"
+              className="font-700 text-primary hover:underline"
+            >
+              Cookie tier list
+            </Link>
+            ,{' '}
+            <Link
+              href="/cookie-run-classic-pet-tier-list"
+              className="font-700 text-primary hover:underline"
+            >
+              Pet tier list
+            </Link>
+            , and{' '}
+            <Link
+              href="/cookie-run-classic-treasure-tier-list"
+              className="font-700 text-primary hover:underline"
+            >
+              Treasure tier list
+            </Link>{' '}
+            each explain upgrade order, not just a static ranking, since the
+            right pick often depends on what you already have.
+          </p>
+          <p>
+            <strong>Playing on a bigger screen:</strong> the{' '}
+            <Link
+              href="/cookie-run-classic-pc"
+              className="font-700 text-primary hover:underline"
+            >
+              PC guide
+            </Link>{' '}
+            covers emulator setup and key mapping. <strong>Already a
+            few weeks in:</strong> the{' '}
+            <Link
+              href="/cookie-run-classic-meta"
+              className="font-700 text-primary hover:underline"
+            >
+              meta guide
+            </Link>{' '}
+            covers what to reprioritize once your account is more
+            established, and the{' '}
+            <Link
+              href="/cookie-run-classic-wiki"
+              className="font-700 text-primary hover:underline"
+            >
+              wiki hub
+            </Link>{' '}
+            is the full index if you would rather browse everything at once.
+          </p>
         </div>
       </section>
 
@@ -231,6 +338,41 @@ export default function HomePage() {
                 <strong>Treasures</strong> (upgradeable passive boosts). Climb
                 the global Leagues by building the strongest combination for
                 your account.
+              </p>
+              <p>
+                Each run is short but the systems behind it are not: Cookies
+                have distinct active skills that fire automatically as you
+                run, Pets add passive buffs like extra jelly value or a
+                one-time revive, and Treasures stack flat or percentage
+                bonuses that scale with how far you upgrade them. A team that
+                looks strong on paper can still underperform if the skill
+                timing or jelly-value curve does not match the course you are
+                running — which is why raw stat totals alone do not tell the
+                full story, and why our{' '}
+                <Link
+                  href="/cookie-run-classic-tier-list"
+                  className="font-700 text-primary hover:underline"
+                >
+                  tier list
+                </Link>{' '}
+                explains the reasoning behind each ranking instead of just
+                listing letters.
+              </p>
+              <p>
+                Progress is measured in two parallel tracks. <strong>Score
+                Leagues</strong> rank you against other players on your best
+                single run, refreshed on a season cycle — this is where
+                Cookie and Pet skill synergy matters most. <strong>Account
+                progression</strong> is the longer game: leveling Cookies,
+                enhancing Treasures, and clearing story stages to unlock new
+                content, which is where{' '}
+                <Link
+                  href="/cookie-run-classic-codes"
+                  className="font-700 text-primary hover:underline"
+                >
+                  codes
+                </Link>{' '}
+                and efficient early resource use matter most.
               </p>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">

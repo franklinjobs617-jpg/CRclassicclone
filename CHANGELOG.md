@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-07-09 — Homepage content expansion (P0, from GSC/GA analysis)
+
+**背景**：GSC数据显示首页排名14.43（全站最差），GA平均停留时长4.59秒（全站最低）——诊断为hub页内容深度不够，只有导航卡片没有实质文字。
+
+**Modified（修改文件）:**
+- `app/page.tsx` — 首页从约725词（含JSX噪音的粗略估算）扩展到约1286词：
+  - Hero区新增可见的 UpdateBadge（此前首页没有显示更新日期）
+  - "What is CookieRun Classic?" 章节从2段扩到4段，新增游戏系统机制说明（Cookie/Pet/Treasure联动逻辑）和双轨进度说明（Score League vs 账号成长），并内链到 tier-list 和 codes 页
+  - 新增 "Where to start" 大段，按"全新账号/纠结是否reroll/不知道升级谁/想上PC/已经玩了几周"五种场景分别给建议，每种场景都内链到对应的spoke页面——这是本次最主要的Hub-and-Spoke内链强化
+  - FAQ 从4条扩到7条，新增"和Kingdom有什么区别"、"新手该重抽吗"、"新账号该优先做什么"三条
+- `lib/data.ts` — `SITE.lastSiteUpdate` 从 2026-07-06 更新为 2026-07-09
+- `app/sitemap.ts` — 首页 lastModified 同步更新为 2026-07-09
+
+**验证:**
+- `npx tsc --noEmit` 通过
+
+**待办（本轮未处理，需要更多数据）：**
+- `/cookie-run-classic-codes` 和 `/cookie-run-classic-code-redeem` 曝光量异常低（分别3次和55次，9天内），怀疑是索引覆盖问题而非纯粹的关键词蚕食——两页Title/H1确实有一定语义重叠（都以"Cookie Run Classic Code(s)"开头），/codes页面还有一个"How to redeem in 60 seconds"小节和/code-redeem内容重叠，但根本原因需要GSC后台的URL Inspection工具确认具体收录状态，本轮无法通过代码自查完全定位
+- 9张AI生成占位配图（codes.png等，均为1024x1024方图）待替换为真实截图，用户后续会提供素材
+
+---
+
 ## 2026-07-09 — AdSense readiness fix: Contact page, About expansion, Privacy Policy consistency
 
 **Added（新增文件）:**
@@ -16,3 +38,4 @@
 **验证:**
 - `npx tsc --noEmit` 通过，无 TypeScript 错误
 - 依据：`建站与提审通用准则-v4-融合版.md` 第七章「AdSense 提审专项检查清单」
+

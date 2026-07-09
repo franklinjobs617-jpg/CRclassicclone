@@ -4,7 +4,7 @@ export const SITE = {
   name: 'CRClassic.wiki',
   domain: 'crclassic.wiki',
   tagline: 'The practical CookieRun Classic hub',
-  lastSiteUpdate: 'July 6, 2026',
+  lastSiteUpdate: 'July 9, 2026',
   officialCouponUrl: 'https://coupon.devplay.com/cookierunclassic',
 }
 
