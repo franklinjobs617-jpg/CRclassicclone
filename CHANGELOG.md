@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-07-09 — Codes/Redeem differentiation + freshness dating (P0, from competitor SERP audit)
+
+**背景**：搜"cookie run classic codes"发现已有4个established游戏媒体站+2个同类EMD竞品(cookierun-classic.wiki、cookierunclassicwiki.wiki)在这个词上有排名。竞品cookierunclassicwiki.wiki用的是"codes hub + 独立月度spoke文章"结构，且把"how to redeem"拆成独立文章，不和codes列表混在一个页面。
+
+**Modified（修改文件）:**
+- `app/cookie-run-classic-codes/page.tsx`：
+  - Title/H1/description 加入"(July 2026)"月度标记，对齐竞品验证过的"codes july 2026"月度刷新search pattern
+  - "How to redeem in 60 seconds"小节从完整5步列表精简为2-3句话+CTA按钮，不再和`/code-redeem`页面重复相同的步骤内容，只做引导
+- `app/sitemap.ts` — `/cookie-run-classic-codes` lastModified 更新为 2026-07-09
+
+**未改动：**
+- `/cookie-run-classic-code-redeem` 页面本身内容已经足够深（iOS workaround、DevPlay ID定位、故障排查表、账号安全提示），和`/codes`的定位差异已经清晰，本轮不需要改
+
+**验证:**
+- `npx tsc --noEmit` 通过
+
+**待办：**
+- 效果需要观察2-4周后再看GSC数据变化，判断月度命名+去重是否带来曝光量提升
+- 是否要新增"where to find new codes"独立spoke页面，需先做KGR/KDRoi关键词验证（v4 SOP第二章），不能照抄竞品清单
+
+---
+
 ## 2026-07-09 — Homepage content expansion (P0, from GSC/GA analysis)
 
 **背景**：GSC数据显示首页排名14.43（全站最差），GA平均停留时长4.59秒（全站最低）——诊断为hub页内容深度不够，只有导航卡片没有实质文字。

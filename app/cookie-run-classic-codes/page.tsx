@@ -22,9 +22,9 @@ import { CopyCode } from '@/components/copy-code'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Cookie Run Classic Codes: Active Rewards & Free Crystals',
+  title: 'Cookie Run Classic Codes (July 2026): Active Rewards & Free Crystals',
   description:
-    'Active Cookie Run Classic codes, rewards, redeem steps, and expired code history. Updated and re-checked regularly.',
+    'All active Cookie Run Classic codes for July 2026 \u2014 free crystals, coins and items, checked and updated regularly, plus a history of expired codes.',
   path: '/cookie-run-classic-codes',
   image: '/images/codes.png',
   imageAlt: 'Cookie Run Classic codes and rewards preview',
@@ -109,8 +109,8 @@ export default function CodesPage() {
     <main>
       <PageHero
         breadcrumb="Codes"
-        h1="Cookie Run Classic Codes"
-        intro="Working CookieRun Classic codes for free crystals, coins and items \u2014 with rewards, redeem steps and a history of expired codes. We re-check this list regularly."
+        h1="Cookie Run Classic Codes (July 2026)"
+        intro="All working CookieRun Classic codes for July 2026 \u2014 free crystals, coins and items, plus a history of expired codes. We re-check this list regularly and refresh it as new codes land."
         updated={CODES_LAST_CHECKED}
       />
       <PageBody>
@@ -132,20 +132,27 @@ export default function CodesPage() {
           </div>
         </Section>
 
-        <Section id="how-to-redeem" title="How to redeem in 60 seconds">
+        <Section id="how-to-redeem" title="How to redeem">
           <Prose>
-            <ol className="ml-5 list-decimal space-y-2">
-              <li>Open CookieRun Classic and tap the Settings icon (top right).</li>
-              <li>Go to the Game Info tab and tap Event Coupon.</li>
-              <li>
-                On the DevPlay coupon page, sign in or enter your Player ID.
-              </li>
-              <li>Paste the code exactly, then confirm.</li>
-              <li>Collect your reward from the in-game Mail.</li>
-            </ol>
+            <p>
+              Open Settings → Game Info → Event Coupon in-game (Android), or
+              use the official web coupon portal if you are on iOS, since
+              Apple&apos;s policies keep the in-game button off iOS clients.
+              Enter your DevPlay Account and the code, submit, then restart
+              the game and check in-game Mail for your reward.
+            </p>
           </Prose>
-          <p className="mt-4 text-sm text-muted-foreground">
-            Prefer the web method? Use the official coupon page:{' '}
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link
+              href="/cookie-run-classic-code-redeem"
+              className="inline-flex items-center gap-2 rounded-2xl bg-primary px-5 py-3 font-heading font-600 text-primary-foreground shadow-[0_4px_0_0_oklch(0.55_0.15_45)] transition-transform hover:-translate-y-0.5"
+            >
+              Full redeem walkthrough &amp; troubleshooting
+              <ArrowRight className="size-5" />
+            </Link>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Prefer the direct link? Use the official coupon page:{' '}
             <Link
               href={SITE.officialCouponUrl}
               className="font-700 text-primary hover:underline"
@@ -154,14 +161,7 @@ export default function CodesPage() {
             >
               coupon.devplay.com
             </Link>
-            . See our{' '}
-            <Link
-              href="/cookie-run-classic-code-redeem"
-              className="font-700 text-primary hover:underline"
-            >
-              full redeem guide
-            </Link>{' '}
-            for screenshots and troubleshooting.
+            .
           </p>
         </Section>
 
