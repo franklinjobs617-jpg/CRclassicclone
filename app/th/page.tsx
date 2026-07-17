@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ThaiHeader, ThaiFooter } from '@/components/blocks'
+import Image from 'next/image'
+import { Gift, Trophy, Sparkles, ArrowRight } from 'lucide-react'
+import { ThaiHeader, ThaiFooter, UpdateBadge } from '@/components/blocks'
+import { CODES_LAST_CHECKED, SITE } from '@/lib/data'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = pageMetadata({
@@ -19,20 +22,88 @@ export const metadata: Metadata = pageMetadata({
 })
 
 export default function ThaiHomePage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: `${SITE.name} TH`,
+    url: `https://${SITE.domain}/th`,
+    description: 'รวมโค้ด CookieRun Classic ล่าสุด และจัดอันดับสัตว์เลี้ยงภาษาไทย',
+    inLanguage: 'th',
+  }
+
   return (
     <main lang="th">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ThaiHeader current="/th" />
 
-      <section className="border-b-2 border-border bg-secondary/50">
-        <div className="mx-auto w-full max-w-4xl px-4 py-10">
-          <h1 className="text-balance font-heading text-3xl font-700 leading-tight text-foreground sm:text-4xl">
-            CookieRun Classic ภาษาไทย
-          </h1>
-          <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            รวมโค้ดล่าสุดและจัดอันดับสัตว์เลี้ยง (Pet Tier List) สำหรับผู้เล่น
-            CookieRun Classic ที่อยากได้ข้อมูลเป็นภาษาไทย เนื้อหาส่วนนี้ยังอยู่
-            ระหว่างขยายเพิ่มเติม เริ่มจาก 2 หัวข้อที่คนถามหาบ่อยที่สุดก่อน
-          </p>
+      <section className="relative overflow-hidden border-b-2 border-border bg-secondary/50">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-12 md:grid-cols-2 md:py-16">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-border bg-card px-3 py-1 text-xs font-700 text-foreground">
+              <Sparkles className="size-3.5 text-primary" aria-hidden="true" />
+              ศูนย์รวมข้อมูล CookieRun Classic ภาษาไทย
+            </span>
+            <h1 className="mt-4 text-balance font-heading text-4xl font-700 leading-[1.05] text-foreground sm:text-5xl">
+              CookieRun Classic ภาษาไทย
+            </h1>
+            <p className="mt-4 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
+              รวมโค้ดล่าสุดและจัดอันดับสัตว์เลี้ยง (Pet Tier List) สำหรับ
+              ผู้เล่นที่อยากได้ข้อมูลเป็นภาษาไทย เริ่มจาก 2 หัวข้อที่คนถามหา
+              บ่อยที่สุดก่อน
+            </p>
+            <UpdateBadge updated={SITE.lastSiteUpdate} label="อัปเดตล่าสุด" className="mt-4" />
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/th/cookie-run-classic-codes"
+                className="inline-flex items-center gap-2 rounded-2xl bg-primary px-5 py-3 font-heading font-600 text-primary-foreground shadow-[0_4px_0_0_oklch(0.55_0.15_45)] transition-transform hover:-translate-y-0.5"
+              >
+                <Gift className="size-5" aria-hidden="true" />
+                ดูโค้ดฟรี
+              </Link>
+              <Link
+                href="/th/cookie-run-classic-pet-tier-list"
+                className="inline-flex items-center gap-2 rounded-2xl border-2 border-border bg-card px-5 py-3 font-heading font-600 text-foreground transition-transform hover:-translate-y-0.5"
+              >
+                <Trophy className="size-5 text-primary" aria-hidden="true" />
+                ดูจัดอันดับสัตว์เลี้ยง
+              </Link>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="overflow-hidden rounded-3xl border-2 border-border shadow-[0_8px_0_0_oklch(0.89_0.03_75)]">
+              <Image
+                src="/images/hero.png"
+                alt="คุกกี้ขิงวิ่งผ่านโลกลูกกวาดเก็บเยลลี่ใน CookieRun Classic"
+                width={1200}
+                height={1200}
+                priority
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b-2 border-border bg-primary/10">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-accent px-2.5 py-1 text-xs font-700 text-accent-foreground">
+              เช็กล่าสุด
+            </span>
+            <span className="text-xs text-muted-foreground">
+              เช็กโค้ดล่าสุดเมื่อ {CODES_LAST_CHECKED} เริ่มจากหน้าโค้ด
+              และจัดอันดับสัตว์เลี้ยงก่อน
+            </span>
+          </div>
+          <Link
+            href="/cookie-run-classic-wiki"
+            className="inline-flex items-center gap-1 text-sm font-700 text-primary hover:underline"
+          >
+            ดูไกด์ทั้งหมด (ภาษาอังกฤษ) <ArrowRight className="size-4" />
+          </Link>
         </div>
       </section>
 

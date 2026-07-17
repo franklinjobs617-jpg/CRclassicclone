@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ThaiHeader, ThaiFooter } from '@/components/blocks'
+import { ThaiHeader, ThaiFooter, UpdateBadge } from '@/components/blocks'
 import { ACTIVE_CODES, CODES_LAST_CHECKED, EXPIRED_CODES, SITE } from '@/lib/data'
 import { pageMetadata } from '@/lib/seo'
 
@@ -29,9 +29,9 @@ export default function ThaiCodesPage() {
             โค้ด CookieRun Classic ล่าสุด
           </h1>
           <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-            รวมโค้ดที่ใช้งานได้ตอนนี้ พร้อมของรางวัลและวิธีแลกโค้ด
-            ตรวจสอบล่าสุดเมื่อ {CODES_LAST_CHECKED}
+            รวมโค้ดที่ใช้งานได้ตอนนี้ พร้อมของรางวัลและวิธีแลกโค้ดทีละขั้นตอน
           </p>
+          <UpdateBadge updated={CODES_LAST_CHECKED} label="ตรวจสอบล่าสุด" className="mt-4" />
         </div>
       </section>
 

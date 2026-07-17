@@ -1,8 +1,15 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Cookie } from 'lucide-react'
 import { PRIMARY_NAV, SITE } from '@/lib/data'
 
 export function SiteFooter() {
+  const pathname = usePathname()
+
+  if (pathname?.startsWith('/th')) return null
+
   return (
     <footer className="mt-16 border-t-2 border-border bg-secondary/60">
       <div className="mx-auto w-full max-w-6xl px-4 py-12">

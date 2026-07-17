@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ThaiHeader, ThaiFooter, TierImage, TierPill } from '@/components/blocks'
+import { ThaiHeader, ThaiFooter, TierImage, TierPill, UpdateBadge } from '@/components/blocks'
 import { PET_TIERS, PET_TIER_UPDATED } from '@/lib/data'
 import { pageMetadata } from '@/lib/seo'
 
@@ -154,8 +154,8 @@ export default function ThaiPetTierListPage() {
           <p className="mt-3 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
             สัตว์เลี้ยงตัวไหนควรปั้นก่อน พร้อมรูปประกอบและคำแนะนำการจับคู่กับ
             คุกกี้แต่ละตัว จัดอันดับจาก S ถึง C ตามความคุ้มค่าจริงในเกม
-            อัปเดตล่าสุด {PET_TIER_UPDATED}
           </p>
+          <UpdateBadge updated={PET_TIER_UPDATED} label="อัปเดตล่าสุด" className="mt-4" />
         </div>
       </section>
 

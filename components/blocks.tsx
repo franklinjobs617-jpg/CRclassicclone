@@ -3,6 +3,7 @@ import Image from 'next/image'
 import {
   ChevronRight,
   Clock,
+  Cookie,
   Image as ImageIcon,
   Info,
   TriangleAlert,
@@ -336,10 +337,20 @@ const TH_PAGES = [
 
 export function ThaiHeader({ current }: { current: string }) {
   return (
-    <header className="border-b-2 border-border bg-card">
-      <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-4">
-        <Link href="/th" className="font-heading text-lg font-700 text-foreground">
-          CRClassic.wiki <span className="text-primary">TH</span>
+    <header className="sticky top-0 z-50 border-b-2 border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
+      <div className="mx-auto flex h-16 w-full max-w-4xl items-center justify-between gap-3 px-4">
+        <Link
+          href="/th"
+          className="flex items-center gap-2 font-heading text-lg font-700 text-foreground"
+          aria-label="CRClassic.wiki หน้าหลักภาษาไทย"
+        >
+          <span className="flex size-9 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_3px_0_0_oklch(0.55_0.15_45)]">
+            <Cookie className="size-5" aria-hidden="true" />
+          </span>
+          <span className="leading-tight">
+            CRClassic
+            <span className="text-primary">.wiki</span>
+          </span>
         </Link>
         <nav className="flex flex-wrap items-center gap-4 text-sm font-600">
           {TH_PAGES.map((p) => (
@@ -354,6 +365,12 @@ export function ThaiHeader({ current }: { current: string }) {
               {p.label}
             </Link>
           ))}
+          <Link
+            href="/"
+            className="rounded-full border-2 border-border bg-card px-3 py-1.5 text-xs font-700 text-foreground hover:border-primary hover:text-primary"
+          >
+            🇬🇧 EN
+          </Link>
         </nav>
       </div>
     </header>
@@ -372,6 +389,17 @@ export function ThaiFooter({ englishHref }: { englishHref: string }) {
           </a>{' '}
           ซึ่งมีไกด์ครบทุกหัวข้อ
         </p>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          <Link href="/about" className="hover:text-primary hover:underline">
+            About (เกี่ยวกับเว็บนี้)
+          </Link>
+          <Link href="/privacy" className="hover:text-primary hover:underline">
+            Privacy Policy (นโยบายความเป็นส่วนตัว)
+          </Link>
+          <Link href="/contact" className="hover:text-primary hover:underline">
+            Contact (ติดต่อเรา)
+          </Link>
+        </div>
         <p>
           © CRClassic.wiki — เว็บไซต์นี้จัดทำโดยแฟนเกม ไม่มีความเกี่ยวข้องกับ Devsisters
         </p>

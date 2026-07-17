@@ -1,5 +1,48 @@
 # Changelog
 
+## 2026-07-17 (续7) — 泰语子页面丰富度补齐 + ThaiHeader组件视觉升级
+
+**背景**：站长反馈 `/th/cookie-run-classic-pet-tier-list` 和 `/th/cookie-run-classic-codes` 两个页面也需要视觉丰富度补齐；同时再次反馈header/footer仍是英文——经查代码，`components/site-header.tsx`和`components/site-footer.tsx`里的路径隐藏判断逻辑（`pathname?.startsWith('/th')`则`return null`）**确认仍然存在于代码中**，判断是站长尚未部署续3/续4批次的文件到生产环境，已提醒站长核对`site-header.tsx`/`site-footer.tsx`这两个具体文件是否已实际替换。
+
+**Modified — ThaiHeader组件视觉升级（影响全部3个泰语页面，一次改动全部生效）:**
+- `components/blocks.tsx`：
+  - `ThaiHeader` 整体重写：加入和英文版`SiteHeader`同款的logo徽章（Cookie图标+主色圆角背景+阴影），改为`sticky`吸顶导航（原来是普通静态header），新增"🇬🇧 EN"按钮可一键切回英文站
+  - 新增`Cookie`图标导入
+
+**Modified — 两个子页面hero区补齐UpdateBadge视觉徽章:**
+- `app/th/cookie-run-classic-pet-tier-list/page.tsx` — hero区新增可见的`UpdateBadge`组件（此前更新日期只是段落里的普通文字，不是视觉徽章），文字内容同步精简去重
+- `app/th/cookie-run-classic-codes/page.tsx` — 同上，新增`UpdateBadge`（label="ตรวจสอบล่าสุด"）
+
+**验证:**
+- `npx tsc --noEmit` 通过
+- 人工核对`components/blocks.tsx`全部导出函数列表完整，`ThaiHeader`改动未影响相邻的`ThaiFooter`/`RelatedLinks`等其他导出
+
+**待确认（需站长配合）:**
+- 请站长明确核对这次连同上传的zip里`components/site-header.tsx`、`components/site-footer.tsx`两个文件是否已经在生产环境实际生效，如果替换后英文header/footer依然出现在`/th`页面上，需要进一步排查（可能是Cloudflare缓存未清、或部署流程遗漏），而不能默认是代码逻辑问题——本轮代码审查确认逻辑本身没有缺陷
+
+---
+
+## 2026-07-17 (续6) — TH首页视觉丰富度修复（Hero区对齐英文版）
+
+**背景**：站长发实际截图对比，指出泰语首页Hero区（首屏）和英文首页视觉差距明显——英文版有大图、徽章、更新日期标签、两个CTA按钮，泰语版只有纯文字标题和一段说明，首屏视觉上像没做完。这是文字词数扩写解决不了的问题，是视觉结构缺失。
+
+**Modified:**
+- `app/th/page.tsx` — Hero区整体重写，对齐英文首页结构：
+  - 新增顶部徽章（"ศูนย์รวมข้อมูล CookieRun Classic ภาษาไทย"）
+  - 新增`UpdateBadge`更新日期标签（泰语label"อัปเดตล่าสุด"）
+  - 新增两个CTA按钮（"ดูโค้ดฟรี"→`/th/cookie-run-classic-codes`，"ดูจัดอันดับสัตว์เลี้ยง"→`/th/cookie-run-classic-pet-tier-list`），复用英文版同款视觉样式（图标+阴影+hover位移）
+  - 新增Hero大图（复用`/images/hero.png`，泰语alt文字）
+  - 新增"เช็กล่าสุด"提示条（对应英文版"LATEST CHECKS"），含内链跳转英文Wiki Hub
+  - 新增`WebSite` JSON-LD结构化数据（此前只有英文首页有，泰语版遗漏）
+
+**验证:**
+- `npx tsc --noEmit` 通过
+
+**方法论说明（非新增，重申）:**
+- 这次修复的是视觉/结构维度，不是文字量维度——两者是独立的质量信号，前几轮只顾着补文字词数，遗漏了首屏视觉丰富度这一层，这次一并处理
+
+---
+
 ## 2026-07-17 (续5) — 泰语页面内容深度修复（真实词等价量核算）
 
 **背景**：站长指出上一轮"内容太薄"的反馈并未真正解决——此前用"泰语字符数变多"作为证据，但这个指标本身有问题：SOP第四章的词数标准（tier list类1000-1400词、hub页1400-1800词）是按英文空格分词定义的，泰语不用空格分词，字符数不能直接类比。
