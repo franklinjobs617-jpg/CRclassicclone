@@ -18,6 +18,7 @@ const ROUTES = [
   { path: '/cookie-run-classic-reroll', lastModified: '2026-06-30', priority: 0.8 },
   { path: '/cookie-run-classic-meta', lastModified: '2026-06-30', priority: 0.8 },
   { path: '/cookie-run-classic-wiki', lastModified: '2026-06-30', priority: 0.8 },
+  { path: '/cookie-run-classic-vs-kingdom', lastModified: '2026-07-17', priority: 0.6 },
   { path: '/about', lastModified: '2026-07-09', priority: 0.5 },
   { path: '/privacy', lastModified: '2026-07-09', priority: 0.3 },
   { path: '/contact', lastModified: '2026-07-09', priority: 0.3 },

@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-07-17 (续) — New "Classic vs Kingdom vs Kakao" explainer page
+
+**背景**：Google自动补全"cookierun classic discord"排第2、Reddit r/Cookierun高赞帖"What even is CookieRun Classic?"下方大量玩家分不清Classic/Kingdom/Kakao/LINE版本关系——站内About页面此前只用一句"launched globally in June 2026"带过，没有专门内容承接这个真实存在的困惑类搜索意图。
+
+**信源核实**：写作前用web search核对了Wikipedia、TV Tropes、Cookie Run Wiki(Fandom)等信源，避免直接照搬Reddit网友评论作为事实。核心事实链：Cookie Run for Kakao(2013) → LINE Cookie Run(2014-2018, 已关服) → CookieRun: OvenBreak(2016) → CookieRun: Kingdom(2021, RPG/城建, 与Classic是完全不同的游戏类型) → Kakao版本2024年恢复更新 → CookieRun Classic(2026-06-25全球上线, 是Cookie Run for Kakao的第四次本地化, 不在韩国/印度上线因为两地已有专属版本)。
+
+**Added（新增文件）:**
+- `app/cookie-run-classic-vs-kingdom/page.tsx` — 新增解释页，含Quick Answer、六节式时间线、Classic vs Kingdom详细对比、Classic vs Kakao/LINE详细对比、FAQ。所有具体史实（发布日期、关服日期等）均来自本轮核实过的公开信源，非编造或转述未经核实的网友说法
+
+**Modified（修改文件）:**
+- `lib/data.ts` — `PRIMARY_NAV` 新增该页入口（Wiki Hub之后）；新增 `EXPLAINER_UPDATED` 常量
+- `app/page.tsx` — `ICONS` 数组同步新增图标(Compass)；"Where to start"段落里"launched globally in June 2026"精确为"June 25, 2026"并内链到新页面；"This week"板块同一处日期同步精确化
+- `app/about/page.tsx` — 同一处日期精确化为 June 25, 2026
+- `app/sitemap.ts` — 新增 `/cookie-run-classic-vs-kingdom` 路由，priority 0.6（低于核心任务型页面的0.8，因为是背景说明类内容而非高频操作型内容）
+
+**验证:**
+- `npx tsc --noEmit` 通过
+
+**待办：**
+- Community/Discord 板块本轮未做，需要用户提供真实官方Discord链接才能继续（不能编造链接）
+- 泰语/多语言内容属于架构级决定，本轮未处理，等AdSense审核结果明朗后再评估
+
+---
+
 ## 2026-07-17 — New Builds page + homepage freshness snapshot + tier list placeholder fix
 
 **背景**：GSC全量数据（6/30-7/16）+ GA页面数据交叉分析后确认三件事：(1) 首页平均互动时长5.5秒，全站最低，比第二低的页面还低将近3倍；(2) 抓取行为97%是Refresh、仅3%是Discovery，说明站点缺少持续的新内容/新URL，和曝光量从7/9起连续下滑的时间线吻合；(3) "cookie run classic build(s)"系列关键词有真实曝光（3个变体共41次）但站内没有对应页面承接，排名全部在10名开外。

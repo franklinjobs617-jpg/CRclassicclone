@@ -82,6 +82,12 @@ export const PRIMARY_NAV: NavItem[] = [
     short: 'All guides',
     blurb: 'Find the right CookieRun Classic guide by task and account stage.',
   },
+  {
+    label: 'Classic vs Kingdom vs Kakao',
+    href: '/cookie-run-classic-vs-kingdom',
+    short: 'Which game is which',
+    blurb: 'What separates CookieRun Classic from Kingdom, Kakao, and the old LINE version.',
+  },
 ]
 
 // ---------- Codes ----------
@@ -656,6 +662,7 @@ export type TreasureTier = {
 
 export const TREASURE_TIER_UPDATED = 'July 6, 2026'
 export const BUILDS_UPDATED = 'July 17, 2026'
+export const EXPLAINER_UPDATED = 'July 17, 2026'
 
 export const TREASURE_TIERS: TreasureTier[] = [
   // S TIER

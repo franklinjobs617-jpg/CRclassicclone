@@ -17,6 +17,7 @@ import {
   RotateCcw,
   Activity,
   Library,
+  Compass,
 } from 'lucide-react'
 import {
   ACTIVE_CODES,
@@ -54,6 +55,7 @@ const ICONS = [
   RotateCcw,
   Activity,
   Library,
+  Compass,
 ]
 
 const FRESHNESS = [
@@ -190,7 +192,15 @@ export default function HomePage() {
         </h2>
         <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-foreground/90">
           <p>
-            CookieRun Classic launched globally in June 2026, so most players
+            CookieRun Classic launched globally on June 25, 2026 (it&apos;s
+            the newest global localization of{' '}
+            <Link
+              href="/cookie-run-classic-vs-kingdom"
+              className="font-700 text-primary hover:underline"
+            >
+              Cookie Run for Kakao
+            </Link>
+            , not the same game as CookieRun: Kingdom), so most players
             reading this are either brand new or still in their first few
             weeks. What you need depends on where you are:
           </p>
@@ -289,7 +299,7 @@ export default function HomePage() {
             </h2>
           </div>
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-foreground/90">
-            CookieRun Classic is still in its first weeks since the June 2026 global
+            CookieRun Classic is still in its first weeks since the June 25, 2026 global
             launch, which is why the numbers below move fast: new codes land
             often, and every guide gets rechecked rather than left to go stale.
             Right now there are{' '}

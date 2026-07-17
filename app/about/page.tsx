@@ -30,7 +30,7 @@ export default function AboutPage() {
         <Section title="What this site covers">
           <Prose>
             <p>
-              CookieRun Classic launched globally in June 2026, and a lot of players are figuring out the game for the first time — myself included. This site collects what I have learned from actually playing the game: which cookies are worth upgrading first, how to redeem codes before they expire, what to prioritize in the first week, which pets and treasures pull their weight, and how to get the game running comfortably on PC.
+              CookieRun Classic launched globally on June 25, 2026, and a lot of players are figuring out the game for the first time — myself included. This site collects what I have learned from actually playing the game: which cookies are worth upgrading first, how to redeem codes before they expire, what to prioritize in the first week, which pets and treasures pull their weight, and how to get the game running comfortably on PC.
             </p>
             <p>
               The goal is narrow on purpose. I am not trying to build a full encyclopedia of every stat and drop rate on day one. Instead, each guide answers one specific question a new or returning player is likely to have — &quot;which code is still active,&quot; &quot;should I reroll,&quot; &quot;what should I upgrade first&quot; — and tries to answer it directly, with a reason attached, instead of just listing raw numbers.
