@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-07-17 (续2) — TH 语言试点：首页 + Pet Tier List + Codes（泰语）
+
+**背景**：GSC真实query数据（Queries.csv全量229行，非仅前30行）重新按SOP第二章词族地图方法论聚合后，发现"pet tier list"泰语变体词族（สัตว์เลี้ยง相关，7条query合计约76次曝光/17天，排名集中在6-17名、点击量全部为0）——典型"已排名未转化"信号，判定为语言不匹配导致。另有独立"想看图片"意图簇（9条零散query，其中"ขอดูรูป"排名1、100%CTR证明该类意图一旦匹配会转化）。web search交叉验证发现直接竞品 cookierun-classic.wiki 已上线 `/th/` 路径的泰语内容，确认该赛道泰语内容已有竞争对手在做。
+
+**范围决策**：站长判断"新游戏=新词=第三方工具数据滞后，不能machanically套用500/月门槛"，要求首页(hub)必须有泰语版承接入口，加上有实测信号支撑的Pet Tier List，以及"code"类目跨语言普遍高强度意图的Codes页——共3页，非全站翻译。
+
+**Added（新增文件）:**
+- `app/th/page.tsx` — 泰语首页/Hub，说明目前泰语内容范围（仅2个专题页），内链到另外两页和英文首页
+- `app/th/cookie-run-classic-pet-tier-list/page.tsx` — 泰语宠物排行，按S/A/B/C分组展示，含真实宠物图片（复用`TierImage`组件）+简短泰语说明，专有名词（宠物名/搭配Cookie名）保留英文原文不翻译
+- `app/th/cookie-run-classic-codes/page.tsx` — 泰语兑换码页，复用`ACTIVE_CODES`真实数据（码本身不需要翻译），含泰语版兑换步骤说明
+
+**内容方法论（非直译，关键词意图驱动）:**
+- 术语锚定在真实GSC query使用的词（สัตว์เลี้ยง=宠物、สมบัติ=宝物、โค้ด=码），并用web search交叉验证多个独立泰语游戏站（thisisgamethailand.com、indexgame.in.th等）自然用词习惯，确认这些词是真实通用用法，非自行编造
+- 游戏内专有名词（Cookie/Pet具体名字）全部保留英文，不翻译——依据：GSC真实query本身就是中英混排（如"cookie run classic tier list สัตว์เลี้ยง"），且交叉验证到的泰语社区站也普遍保留英文专名
+- Pet Tier List页面新增`bestForTh`字段（`lib/data.ts`，25条全部补充），是英文`bestFor`的简短泰语转述而非逐句直译，刻意保持短句降低语法出错风险
+
+**Modified — 架构（按SOP第十七章规范）:**
+- `lib/seo.ts` — `pageMetadata()`新增可选`alternateLanguages`参数，生成hreflang声明
+- `app/page.tsx`、`app/cookie-run-classic-pet-tier-list/page.tsx`、`app/cookie-run-classic-codes/page.tsx` — 三个英文对应页metadata加入`alternateLanguages`（en/th/x-default互相声明）
+- `components/site-header.tsx` — 桌面端+移动端导航都加入"🇹🇭 ไทย"入口，指向`/th`（不是逐页对应，因为不是每页都有泰语版，指向自解释的泰语首页最安全）
+- `components/blocks.tsx` — 新增`ThaiHeader`/`ThaiFooter`轻量组件，供3个泰语页共用，Footer明确写"泰语版内容尚不完整，其他内容看英文版"，不假装覆盖完整
+- `lib/data.ts` — `PetTier`类型新增可选字段`bestForTh`
+- `app/sitemap.ts` — 新增`/th`、`/th/cookie-run-classic-pet-tier-list`、`/th/cookie-run-classic-codes`三条路由
+
+**架构决策说明（对应SOP第十七章"禁止模式"）:**
+- 刻意使用**独立文件夹路由**（`app/th/xxx/page.tsx`）而非`[locale]`动态路由+`generateStaticParams`，因为只做3个页面，用动态locale方案反而会引入"路由存在但内容不存在"的静默fallback风险；独立路由不存在时Next.js会直接404，不会静默显示英文内容，更符合"不能声明不存在的语言支持"的核心原则
+- 未使用`const isTh = locale === "th"`这类单一布尔判断反模式
+
+**验证:**
+- `npx tsc --noEmit` 通过
+- 自动化脚本检查三个泰语页面文件的泰语字符密度（645/1031/722字符），确认非空壳/非意外英文fallback——**注意：这只验证"确实是泰语"，不验证"泰语是否地道准确"，后者仍需真人核对，本轮未完成**
+
+**待办（明确标注为阻塞项）:**
+- **泰语内容尚未经过真人（母语者/熟练使用者）校对**，站长已知悉此风险并选择先上线、校对后处理，需后续跟进补上这一步
+- 2-4周后回查GSC，重点看Pet Tier List泰语版是否开始承接词族1的曝光并产生点击（当前基线：约76次曝光/17天，0点击）
+- Tier List（角色）、Treasure Tier List泰语版视本轮试点数据决定是否扩展，本轮数据不足以支撑（各自仅约4次曝光）
+
+---
+
 ## 2026-07-17 (续) — New "Classic vs Kingdom vs Kakao" explainer page
 
 **背景**：Google自动补全"cookierun classic discord"排第2、Reddit r/Cookierun高赞帖"What even is CookieRun Classic?"下方大量玩家分不清Classic/Kingdom/Kakao/LINE版本关系——站内About页面此前只用一句"launched globally in June 2026"带过，没有专门内容承接这个真实存在的困惑类搜索意图。

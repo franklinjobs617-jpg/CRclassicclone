@@ -8,6 +8,14 @@ type PageMetadataInput = {
   image: string
   imageAlt: string
   type?: 'website' | 'article'
+  /**
+   * hreflang alternates. Key = BCP47 locale (e.g. 'en', 'th', 'x-default'),
+   * value = absolute path for that language version of this page.
+   * Only include a language here if that page's real, human-checked content
+   * actually exists — never declare a locale just because the route resolves.
+   * See v4 SOP Chapter 17.
+   */
+  alternateLanguages?: Record<string, string>
 }
 
 export function pageMetadata({
@@ -17,13 +25,17 @@ export function pageMetadata({
   image,
   imageAlt,
   type = 'article',
+  alternateLanguages,
 }: PageMetadataInput): Metadata {
   return {
     title: {
       absolute: title,
     },
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      ...(alternateLanguages ? { languages: alternateLanguages } : {}),
+    },
     openGraph: {
       type,
       siteName: SITE.name,

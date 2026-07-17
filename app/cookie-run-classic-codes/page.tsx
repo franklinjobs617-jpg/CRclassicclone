@@ -28,6 +28,11 @@ export const metadata: Metadata = pageMetadata({
   path: '/cookie-run-classic-codes',
   image: '/images/codes.png',
   imageAlt: 'Cookie Run Classic codes and rewards preview',
+  alternateLanguages: {
+    en: 'https://crclassic.wiki/cookie-run-classic-codes',
+    th: 'https://crclassic.wiki/th/cookie-run-classic-codes',
+    'x-default': 'https://crclassic.wiki/cookie-run-classic-codes',
+  },
 })
 
 const FAQ = [

@@ -22,6 +22,9 @@ const ROUTES = [
   { path: '/about', lastModified: '2026-07-09', priority: 0.5 },
   { path: '/privacy', lastModified: '2026-07-09', priority: 0.3 },
   { path: '/contact', lastModified: '2026-07-09', priority: 0.3 },
+  { path: '/th', lastModified: '2026-07-17', priority: 0.7 },
+  { path: '/th/cookie-run-classic-pet-tier-list', lastModified: '2026-07-17', priority: 0.7 },
+  { path: '/th/cookie-run-classic-codes', lastModified: '2026-07-17', priority: 0.7 },
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

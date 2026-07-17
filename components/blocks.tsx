@@ -328,6 +328,58 @@ export function TierImage({
   )
 }
 
+const TH_PAGES = [
+  { href: '/th', label: 'หน้าหลัก' },
+  { href: '/th/cookie-run-classic-pet-tier-list', label: 'จัดอันดับสัตว์เลี้ยง' },
+  { href: '/th/cookie-run-classic-codes', label: 'โค้ดล่าสุด' },
+]
+
+export function ThaiHeader({ current }: { current: string }) {
+  return (
+    <header className="border-b-2 border-border bg-card">
+      <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-4">
+        <Link href="/th" className="font-heading text-lg font-700 text-foreground">
+          CRClassic.wiki <span className="text-primary">TH</span>
+        </Link>
+        <nav className="flex flex-wrap items-center gap-4 text-sm font-600">
+          {TH_PAGES.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              className={cn(
+                'hover:text-primary',
+                p.href === current ? 'text-primary' : 'text-muted-foreground'
+              )}
+            >
+              {p.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  )
+}
+
+export function ThaiFooter({ englishHref }: { englishHref: string }) {
+  return (
+    <footer className="border-t-2 border-border bg-secondary/40">
+      <div className="mx-auto w-full max-w-4xl space-y-3 px-4 py-8 text-sm leading-relaxed text-muted-foreground">
+        <p>
+          CRClassic.wiki เวอร์ชันภาษาไทยยังมีเนื้อหาไม่ครบทุกหน้าเหมือนเวอร์ชันภาษาอังกฤษ
+          หากหาข้อมูลที่ต้องการในหน้านี้ไม่เจอ ลองดูที่{' '}
+          <a href={englishHref} className="font-700 text-primary hover:underline">
+            เวอร์ชันภาษาอังกฤษ (English site)
+          </a>{' '}
+          ซึ่งมีไกด์ครบทุกหัวข้อ
+        </p>
+        <p>
+          © CRClassic.wiki — เว็บไซต์นี้จัดทำโดยแฟนเกม ไม่มีความเกี่ยวข้องกับ Devsisters
+        </p>
+      </div>
+    </footer>
+  )
+}
+
 export function RelatedLinks({ exclude }: { exclude: string }) {
   const items = PRIMARY_NAV.filter((i) => i.href !== exclude)
   return (

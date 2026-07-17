@@ -41,6 +41,11 @@ export const metadata: Metadata = pageMetadata({
   image: '/images/hero.png',
   imageAlt: 'CookieRun Classic Wiki guide hub preview',
   type: 'website',
+  alternateLanguages: {
+    en: 'https://crclassic.wiki/',
+    th: 'https://crclassic.wiki/th',
+    'x-default': 'https://crclassic.wiki/',
+  },
 })
 
 const ICONS = [

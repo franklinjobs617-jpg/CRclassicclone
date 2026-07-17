@@ -20,6 +20,11 @@ export const metadata: Metadata = pageMetadata({
   path: '/cookie-run-classic-pet-tier-list',
   image: '/images/pet-tier-roster.webp',
   imageAlt: 'Cookie Run Classic pet roster and tier list preview',
+  alternateLanguages: {
+    en: 'https://crclassic.wiki/cookie-run-classic-pet-tier-list',
+    th: 'https://crclassic.wiki/th/cookie-run-classic-pet-tier-list',
+    'x-default': 'https://crclassic.wiki/cookie-run-classic-pet-tier-list',
+  },
 })
 
 const FAQ = [

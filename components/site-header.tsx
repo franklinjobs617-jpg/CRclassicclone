@@ -51,6 +51,13 @@ export function SiteHeader() {
           })}
         </nav>
 
+        <Link
+          href="/th"
+          className="hidden shrink-0 items-center rounded-full border-2 border-border bg-card px-3 py-1.5 text-xs font-700 text-foreground hover:border-primary hover:text-primary lg:flex"
+        >
+          🇹🇭 ไทย
+        </Link>
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -99,6 +106,15 @@ export function SiteHeader() {
                 </li>
               )
             })}
+            <li>
+              <Link
+                href="/th"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 rounded-2xl bg-secondary px-4 py-3 font-heading font-600"
+              >
+                🇹🇭 ภาษาไทย (Thai)
+              </Link>
+            </li>
           </ul>
         </nav>
       )}
