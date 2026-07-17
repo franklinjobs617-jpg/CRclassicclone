@@ -7,6 +7,7 @@ import {
   Trophy,
   PawPrint,
   Gem,
+  Layers,
   Monitor,
   Ticket,
   Sparkles,
@@ -19,6 +20,7 @@ import {
 } from 'lucide-react'
 import {
   ACTIVE_CODES,
+  BUILDS_UPDATED,
   CODES_LAST_CHECKED,
   COOKIE_TIER_UPDATED,
   PC_TIERS_UPDATED,
@@ -45,6 +47,7 @@ const ICONS = [
   Trophy,
   PawPrint,
   Gem,
+  Layers,
   Monitor,
   Ticket,
   BookOpen,
@@ -58,6 +61,7 @@ const FRESHNESS = [
   { label: 'Cookie tier list', href: '/cookie-run-classic-tier-list', updated: COOKIE_TIER_UPDATED },
   { label: 'Pet tier list', href: '/cookie-run-classic-pet-tier-list', updated: PET_TIER_UPDATED },
   { label: 'Treasure tier list', href: '/cookie-run-classic-treasure-tier-list', updated: TREASURE_TIER_UPDATED },
+  { label: 'Builds', href: '/cookie-run-classic-builds', updated: BUILDS_UPDATED },
   { label: 'PC guide', href: '/cookie-run-classic-pc', updated: PC_TIERS_UPDATED },
 ]
 
@@ -295,7 +299,7 @@ export default function HomePage() {
             waiting to be redeemed, and this site was last reviewed end-to-end on{' '}
             <strong>{SITE.lastSiteUpdate}</strong>.
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {FRESHNESS.map((item) => (
               <Link
                 key={item.href}

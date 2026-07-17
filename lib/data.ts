@@ -41,6 +41,12 @@ export const PRIMARY_NAV: NavItem[] = [
     blurb: 'Treasures worth upgrading first for score and survival.',
   },
   {
+    label: 'Builds',
+    href: '/cookie-run-classic-builds',
+    short: 'Full loadout combos',
+    blurb: 'Best Cookie, Pet and Treasure combos for League, coins and clearing quests.',
+  },
+  {
     label: 'PC Guide',
     href: '/cookie-run-classic-pc',
     short: 'Play on desktop',
@@ -649,6 +655,7 @@ export type TreasureTier = {
 }
 
 export const TREASURE_TIER_UPDATED = 'July 6, 2026'
+export const BUILDS_UPDATED = 'July 17, 2026'
 
 export const TREASURE_TIERS: TreasureTier[] = [
   // S TIER

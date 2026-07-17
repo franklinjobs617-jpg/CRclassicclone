@@ -284,6 +284,50 @@ export function ImageSlot({
   )
 }
 
+export function TierImage({
+  src,
+  alt,
+  size = 48,
+  rounded = 'rounded-xl',
+}: {
+  src: string
+  alt: string
+  size?: number
+  rounded?: string
+}) {
+  const isPlaceholder = src.includes('placeholder')
+  return (
+    <div
+      className={cn(
+        'shrink-0 overflow-hidden border-2 border-border bg-secondary',
+        rounded
+      )}
+      style={{ width: size, height: size }}
+    >
+      {isPlaceholder ? (
+        <div
+          className="flex h-full w-full items-center justify-center border-2 border-dashed border-primary/30 bg-primary/5 text-primary"
+          title={`${alt} — screenshot not added yet`}
+        >
+          <ImageIcon
+            style={{ width: size * 0.45, height: size * 0.45 }}
+            aria-hidden="true"
+          />
+        </div>
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          width={size}
+          height={size}
+          className="h-full w-full object-contain"
+          unoptimized
+        />
+      )}
+    </div>
+  )
+}
+
 export function RelatedLinks({ exclude }: { exclude: string }) {
   const items = PRIMARY_NAV.filter((i) => i.href !== exclude)
   return (

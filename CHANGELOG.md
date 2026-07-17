@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-07-17 — New Builds page + homepage freshness snapshot + tier list placeholder fix
+
+**背景**：GSC全量数据（6/30-7/16）+ GA页面数据交叉分析后确认三件事：(1) 首页平均互动时长5.5秒，全站最低，比第二低的页面还低将近3倍；(2) 抓取行为97%是Refresh、仅3%是Discovery，说明站点缺少持续的新内容/新URL，和曝光量从7/9起连续下滑的时间线吻合；(3) "cookie run classic build(s)"系列关键词有真实曝光（3个变体共41次）但站内没有对应页面承接，排名全部在10名开外。
+
+**Added（新增文件）:**
+- `app/cookie-run-classic-builds/page.tsx` — 新增Builds页面，对应"build/builds"关键词缺口。内容不引入任何新的游戏事实，完全基于 `COOKIE_TIERS`/`PET_TIERS`/`TREASURE_TIERS` 里已存在、已核实的数据重新组织成4套完整loadout（Gold Rush 刷金 / Endgame Score 冲分 / Safe Clear 安全过关 / First Week Starter 新手起步），每套明确标注引用了哪些已有页面的既定结论（例如Potato Salad+Mr. Limeguard的搭配、Bari自救流的实战笔记），不做超出现有数据范围的断言
+
+**Modified（修改文件）:**
+- `lib/data.ts` — `PRIMARY_NAV` 新增Builds条目（紧跟Treasure Tier List之后）；新增 `BUILDS_UPDATED` 常量
+- `app/page.tsx`：
+  - 新增"CookieRun Classic this week"时效性板块，位置在"Where to start"和"Start here"之间。内容完全由现有数据动态生成（`ACTIVE_CODES.length`、`SITE.lastSiteUpdate`、五个攻略页各自的最后核对日期），不写死具体游戏内容数字，避免编造未经核实的"本周更新"类断言
+  - `ICONS` 数组同步新增Builds对应图标（Layers），位置和`PRIMARY_NAV`新条目对齐
+  - `FRESHNESS` 展示卡片网格新增Builds页面，5列改6列布局
+- `app/sitemap.ts` — 新增 `/cookie-run-classic-builds` 路由；首页 `lastModified` 同步更新为 2026-07-17
+
+**修复（视觉一致性，非本轮重点但顺带处理）:**
+- `components/blocks.tsx` — 新增 `TierImage` 组件，自动判断图片路径是否为占位图，是则渲染统一的"待补图"图标框（而非裸露显示同一张generic占位图）
+- `app/cookie-run-classic-treasure-tier-list/page.tsx` — 17处占位图（Treasure Tier List表格里全部17个条目）统一替换为 `TierImage`
+- `app/cookie-run-classic-tier-list/page.tsx`、`app/cookie-run-classic-pet-tier-list/page.tsx` — 各自1处占位图同步替换，保持全站视觉规则一致
+
+**验证:**
+- `npx tsc --noEmit` 通过，无类型错误
+- 手动脚本核对Builds页面引用的全部12个Cookie/Pet/Treasure名字与`lib/data.ts`原始拼写逐一比对，确认无非空断言(`!`)运行时崩溃风险
+
+**待办：**
+- Builds页面效果需要2-4周GSC数据验证，确认是否真的补上了"build/builds"关键词的排名缺口
+- 首页新板块和Builds页面上线后，建议持续观察抓取行为里Discovery占比是否回升，这是判断"内容更新节奏"是否奏效的核心指标，不是一次性任务
+- 外链投入目前为0（站长已确认非本轮处理范围）
+
+---
+
 ## 2026-07-09 — Codes/Redeem differentiation + freshness dating (P0, from competitor SERP audit)
 
 **背景**：搜"cookie run classic codes"发现已有4个established游戏媒体站+2个同类EMD竞品(cookierun-classic.wiki、cookierunclassicwiki.wiki)在这个词上有排名。竞品cookierunclassicwiki.wiki用的是"codes hub + 独立月度spoke文章"结构，且把"how to redeem"拆成独立文章，不和codes列表混在一个页面。
