@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import {
   Callout,
   Faq,
@@ -8,6 +7,7 @@ import {
   Prose,
   RelatedLinks,
   Section,
+  TierImage,
   TierPill,
 } from '@/components/blocks'
 import { PET_TIER_UPDATED, PET_TIERS } from '@/lib/data'
@@ -140,16 +140,7 @@ export default function PetTierListPage() {
                     className="border-t-2 border-border bg-card align-top"
                   >
                     <td className="p-3">
-                      <div className="size-12 overflow-hidden rounded-xl border-2 border-border bg-secondary">
-                        <Image
-                          src={pet.image}
-                          alt={pet.name}
-                          width={48}
-                          height={48}
-                          className="h-full w-full object-contain"
-                          unoptimized
-                        />
-                      </div>
+                      <TierImage src={pet.image} alt={pet.name} size={48} />
                     </td>
                     <td className="p-3 font-700 text-foreground">
                       {pet.name}
@@ -184,16 +175,7 @@ export default function PetTierListPage() {
                 className="rounded-2xl border-2 border-border bg-card p-6"
               >
                 <div className="flex items-start gap-4">
-                  <div className="size-20 shrink-0 overflow-hidden rounded-2xl border-2 border-border bg-secondary">
-                    <Image
-                      src={pet.image}
-                      alt={pet.name}
-                      width={80}
-                      height={80}
-                      className="h-full w-full object-contain"
-                      unoptimized
-                    />
-                  </div>
+                  <TierImage src={pet.image} alt={pet.name} size={80} rounded="rounded-2xl" />
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-heading text-lg font-700 text-foreground">
@@ -227,16 +209,7 @@ export default function PetTierListPage() {
                 className="rounded-2xl border-2 border-border bg-card p-6"
               >
                 <div className="flex items-start gap-4">
-                  <div className="size-20 shrink-0 overflow-hidden rounded-2xl border-2 border-border bg-secondary">
-                    <Image
-                      src={pet.image}
-                      alt={pet.name}
-                      width={80}
-                      height={80}
-                      className="h-full w-full object-contain"
-                      unoptimized
-                    />
-                  </div>
+                  <TierImage src={pet.image} alt={pet.name} size={80} rounded="rounded-2xl" />
                   <div>
                     <div className="flex items-center gap-2">
                       <h3 className="font-heading text-lg font-700 text-foreground">

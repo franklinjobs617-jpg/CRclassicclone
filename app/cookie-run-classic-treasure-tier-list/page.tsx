@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import {
   Callout,
   Faq,
@@ -8,6 +7,7 @@ import {
   Prose,
   RelatedLinks,
   Section,
+  TierImage,
   TierPill,
 } from '@/components/blocks'
 import { SITE, TREASURE_TIER_UPDATED, TREASURE_TIERS } from '@/lib/data'
@@ -66,16 +66,7 @@ function TreasureTable({ rows }: { rows: typeof TREASURE_TIERS }) {
               className="border-t-2 border-border bg-card align-top"
             >
               <td className="p-3">
-                <div className="size-12 overflow-hidden rounded-xl border-2 border-border bg-secondary">
-                  <Image
-                    src={t.image}
-                    alt={t.name}
-                    width={48}
-                    height={48}
-                    className="h-full w-full object-contain"
-                    unoptimized
-                  />
-                </div>
+                <TierImage src={t.image} alt={t.name} size={48} />
               </td>
               <td className="p-3 font-700 text-foreground">{t.name}</td>
               <td className="p-3">

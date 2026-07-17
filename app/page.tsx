@@ -18,9 +18,14 @@ import {
   Library,
 } from 'lucide-react'
 import {
+  ACTIVE_CODES,
   CODES_LAST_CHECKED,
+  COOKIE_TIER_UPDATED,
+  PC_TIERS_UPDATED,
+  PET_TIER_UPDATED,
   PRIMARY_NAV,
   SITE,
+  TREASURE_TIER_UPDATED,
 } from '@/lib/data'
 import { Faq, UpdateBadge } from '@/components/blocks'
 import { pageMetadata } from '@/lib/seo'
@@ -46,6 +51,14 @@ const ICONS = [
   RotateCcw,
   Activity,
   Library,
+]
+
+const FRESHNESS = [
+  { label: 'Codes', href: '/cookie-run-classic-codes', updated: CODES_LAST_CHECKED },
+  { label: 'Cookie tier list', href: '/cookie-run-classic-tier-list', updated: COOKIE_TIER_UPDATED },
+  { label: 'Pet tier list', href: '/cookie-run-classic-pet-tier-list', updated: PET_TIER_UPDATED },
+  { label: 'Treasure tier list', href: '/cookie-run-classic-treasure-tier-list', updated: TREASURE_TIER_UPDATED },
+  { label: 'PC guide', href: '/cookie-run-classic-pc', updated: PC_TIERS_UPDATED },
 ]
 
 const HOME_FAQ = [
@@ -257,6 +270,48 @@ export default function HomePage() {
             </Link>{' '}
             is the full index if you would rather browse everything at once.
           </p>
+        </div>
+      </section>
+
+      {/* Current snapshot */}
+      <section className="mx-auto w-full max-w-6xl px-4 pt-10">
+        <div className="rounded-3xl border-2 border-border bg-card p-6 sm:p-8">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-accent px-2.5 py-1 text-xs font-700 text-accent-foreground">
+              RIGHT NOW
+            </span>
+            <h2 className="font-heading text-xl font-700 text-foreground sm:text-2xl">
+              CookieRun Classic this week
+            </h2>
+          </div>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-foreground/90">
+            CookieRun Classic is still in its first weeks since the June 2026 global
+            launch, which is why the numbers below move fast: new codes land
+            often, and every guide gets rechecked rather than left to go stale.
+            Right now there are{' '}
+            <strong>
+              {ACTIVE_CODES.length} active code{ACTIVE_CODES.length === 1 ? '' : 's'}
+            </strong>{' '}
+            waiting to be redeemed, and this site was last reviewed end-to-end on{' '}
+            <strong>{SITE.lastSiteUpdate}</strong>.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {FRESHNESS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex flex-col justify-between rounded-2xl border-2 border-border bg-secondary/40 p-4 transition-colors hover:border-primary hover:bg-primary/10"
+              >
+                <span className="font-heading text-sm font-700 text-foreground">
+                  {item.label}
+                </span>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-600 text-muted-foreground">
+                  <RefreshCw className="size-3.5" aria-hidden="true" />
+                  Checked {item.updated}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
