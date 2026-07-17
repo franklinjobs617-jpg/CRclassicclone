@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ThaiHeader, ThaiFooter } from '@/components/blocks'
-import { ACTIVE_CODES, CODES_LAST_CHECKED, SITE } from '@/lib/data'
+import { ACTIVE_CODES, CODES_LAST_CHECKED, EXPIRED_CODES, SITE } from '@/lib/data'
 import { pageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = pageMetadata({
@@ -20,7 +20,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function ThaiCodesPage() {
   return (
-    <main>
+    <main lang="th">
       <ThaiHeader current="/th/cookie-run-classic-codes" />
 
       <section className="border-b-2 border-border bg-secondary/50">
@@ -36,6 +36,16 @@ export default function ThaiCodesPage() {
       </section>
 
       <div className="mx-auto w-full max-w-4xl space-y-10 px-4 py-10">
+        <section>
+          <p className="text-sm leading-relaxed text-foreground/90">
+            โค้ด (Code) คือของขวัญฟรีที่ Devsisters แจกผ่านช่องทางทางการ เช่น
+            ประกาศในเกม, โซเชียลมีเดีย, หรืออีเวนต์เปิดตัว ปกติจะเป็นคริสตัล
+            เหรียญ หรือไอเทมอัปเกรด แลกได้ผ่านหน้าเว็บคูปองทางการเท่านั้น
+            ไม่ต้องดาวน์โหลดแอปหรือให้ข้อมูลบัญชีกับเว็บอื่น โค้ดมีอายุจำกัด
+            บางตัวหมดอายุเร็วโดยไม่มีประกาศล่วงหน้า ควรแลกทันทีที่เห็น
+          </p>
+        </section>
+
         <section>
           <h2 className="font-heading text-xl font-700 text-foreground">
             โค้ดที่ใช้งานได้ตอนนี้
@@ -92,6 +102,102 @@ export default function ThaiCodesPage() {
             และเช็กว่าแลกด้วยบัญชี Player ID ที่ถูกต้อง
             แต่ละโค้ดใช้ได้ครั้งเดียวต่อบัญชี
           </p>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-700 text-foreground">
+            โค้ดที่หมดอายุแล้ว
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            เก็บไว้ให้เช็กว่าโค้ดที่เจอจากที่อื่นตายแล้วหรือยัง
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-2xl border-2 border-border">
+            <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+              <thead>
+                <tr className="bg-secondary text-foreground">
+                  <th className="p-3 font-700">โค้ด</th>
+                  <th className="p-3 font-700">รางวัล</th>
+                  <th className="p-3 font-700">สถานะ</th>
+                </tr>
+              </thead>
+              <tbody>
+                {EXPIRED_CODES.map((c) => (
+                  <tr key={c.code} className="border-t-2 border-border bg-card opacity-70">
+                    <td className="p-3 font-mono font-700 text-foreground">
+                      {c.code}
+                    </td>
+                    <td className="p-3 text-muted-foreground">{c.reward}</td>
+                    <td className="p-3 text-muted-foreground">หมดอายุ</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-700 text-foreground">
+            ปัญหาที่พบบ่อยตอนแลกโค้ด
+          </h2>
+          <ul className="mt-3 ml-5 list-disc space-y-2 text-sm leading-relaxed text-foreground/90">
+            <li>
+              <strong>ระบบแจ้งว่าโค้ดไม่ถูกต้อง:</strong>{' '}
+              เช็กตัวสะกดอีกครั้ง โค้ดตัวพิมพ์ใหญ่-เล็กมีผล และห้ามมี
+              เว้นวรรคติดมาตอนคัดลอก
+            </li>
+            <li>
+              <strong>ระบบแจ้งว่าใช้ไปแล้ว:</strong>{' '}
+              โค้ดแต่ละตัวใช้ได้ครั้งเดียวต่อบัญชี ถ้าเคยแลกด้วยบัญชีนี้
+              มาก่อนจะไม่สามารถแลกซ้ำได้
+            </li>
+            <li>
+              <strong>แลกสำเร็จแต่ของไม่เข้าเกม:</strong>{' '}
+              ปิดเกมให้สนิทแล้วเปิดใหม่ ของรางวัลจะไปรออยู่ที่กล่องจดหมาย
+              ไม่ได้เข้ากระเป๋าไอเทมทันที
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-700 text-foreground">
+            คำถามที่พบบ่อย
+          </h2>
+          <div className="mt-4 space-y-4 text-sm leading-relaxed">
+            <div>
+              <p className="font-700 text-foreground">
+                โค้ดตัวพิมพ์ใหญ่-เล็กมีผลไหม?
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                มีผล พิมพ์หรือคัดลอกให้ตรงตามที่แสดงเป๊ะๆ ห้ามเว้นวรรคเกิน
+              </p>
+            </div>
+            <div>
+              <p className="font-700 text-foreground">
+                โค้ดหนึ่งใช้ได้กี่ครั้ง?
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                ส่วนใหญ่ใช้ได้ครั้งเดียวต่อบัญชี ถ้ามีหลายบัญชีสามารถแลกได้
+                บัญชีละ 1 ครั้ง
+              </p>
+            </div>
+            <div>
+              <p className="font-700 text-foreground">
+                หาโค้ดใหม่ได้ที่ไหนบ้าง?
+              </p>
+              <p className="mt-1 text-muted-foreground">
+                ติดตามประกาศในเกม, X (Twitter) ทางการ{' '}
+                <a
+                  href="https://x.com/CRClassicEN"
+                  target="_blank"
+                  rel="noopener"
+                  className="font-700 text-primary hover:underline"
+                >
+                  @CRClassicEN
+                </a>{' '}
+                หรือกลับมาเช็กหน้านี้ เราอัปเดตทันทีที่ยืนยันโค้ดใหม่
+              </p>
+            </div>
+          </div>
         </section>
 
         <div className="rounded-2xl border-2 border-dashed border-primary/30 bg-primary/5 p-5 text-sm leading-relaxed text-foreground/90">

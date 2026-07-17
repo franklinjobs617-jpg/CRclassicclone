@@ -411,6 +411,8 @@ export type PetTier = {
   bestFor: string
   /** Short Thai gist for /th pages — not a literal translation, see CHANGELOG. */
   bestForTh?: string
+  /** Optional second sentence for B-tier detail on /th pages — real usage context, not padding. */
+  bestForThExtra?: string
   earlyValue: string
   upgradePriority: string
   image: string
@@ -548,6 +550,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Alchemist Cookie / Any Gambler',
     bestFor: 'Random bonus rewards during runs',
     bestForTh: 'สุ่มโบนัสระหว่างวิ่ง',
+    bestForThExtra: 'เหมาะเป็นตัวเสริมสนุกๆ มากกว่าตัวหลัก เพราะผลตอบแทนไม่แน่นอน',
     earlyValue: 'Rolls dice that randomly grant coins, score boosts, or energy. Fun and occasionally lucrative but inconsistent.',
     upgradePriority: 'Low priority. The randomness makes it unreliable for competitive play.',
     image: '/images/pets/lucky-dice-bros.webp',
@@ -558,6 +561,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Any Cookie (Music/Sync)',
     bestFor: 'Rhythm-based score boosts on beat-timed stages',
     bestForTh: 'เพิ่มคะแนนตามจังหวะเพลงในด่านดนตรี',
+    bestForThExtra: 'ใช้ได้ดีเฉพาะด่านที่มีจังหวะเพลงชัดเจน นอกด่านแบบนี้จะเสียเปรียบเพ็ทตัวอื่น',
     earlyValue: 'Creates musical notes that boost score when collected in rhythm. Rewards players who can maintain consistent timing.',
     upgradePriority: 'A niche pick for rhythm-focused players. Skip if you prefer straightforward scoring.',
     image: '/images/pets/ms-do-re-mi.webp',
@@ -568,6 +572,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Any Cookie (Music/Sync)',
     bestFor: 'Harmonic pair with Ms. Do-Re-Mi for music-themed runs',
     bestForTh: 'จับคู่กับ Ms. Do-Re-Mi สำหรับด่านดนตรี',
+    bestForThExtra: 'ควรมีคู่กันทั้งสองตัวถ้าจะเล่นสายดนตรีจริงจัง แยกใช้ตัวเดียวจะได้ประโยชน์ไม่เต็มที่',
     earlyValue: 'Works alongside Ms. Do-Re-Mi to create harmonic jelly combos. Stronger together but takes two pet slots.',
     upgradePriority: 'Only invest if using both music pets together. Alone, he underperforms.',
     image: '/images/pets/mr-fa-sol-la-si.webp',
@@ -578,6 +583,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'GingerBrave / Brave Cookie',
     bestFor: 'Bonus score after revival events',
     bestForTh: 'ได้คะแนนโบนัสหลังฟื้นคืนชีพ',
+    bestForThExtra: 'เหมาะกับบัญชีที่ใช้คุกกี้สายฟื้นคืนชีพ ถ้าไม่ตายบ่อยจะไม่ค่อยได้ใช้ประโยชน์',
     earlyValue: 'Haunts the run after a revival, creating ghost jellies worth bonus points. Only triggers when your cookie revives.',
     upgradePriority: 'Situational. Only useful if your strategy revolves around intentional revival mechanics.',
     image: '/images/pets/ginger-ghost.webp',
@@ -588,6 +594,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Princess Cookie / Any Coin Farmer',
     bestFor: 'Coin generation tied to obstacle passes',
     bestForTh: 'สร้างเหรียญเมื่อผ่านสิ่งกีดขวาง',
+    bestForThExtra: 'เหมาะกับด่านที่มีสิ่งกีดขวางถี่ๆ ด่านโล่งจะได้ผลตอบแทนน้อยกว่า',
     earlyValue: 'Opens at intervals to release coins based on obstacles passed. Decent early-game coin generation before unlocking premium pets.',
     upgradePriority: 'Use early, replace with Gold Drop or Pirate\'s Bomb once available.',
     image: '/images/pets/enchanted-locket.webp',
@@ -598,6 +605,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Any Cookie (Score)',
     bestFor: 'Double-drop scoring with synchronized bean jellies',
     bestForTh: 'ทำคะแนนคู่จากเยลลี่ถั่วที่มาพร้อมกัน',
+    bestForThExtra: 'ต้องจับจังหวะเก็บเยลลี่ถั่วให้พร้อมกัน ถ้าจับไม่ทันจะได้คะแนนน้อยกว่าที่คิด',
     earlyValue: 'Two beans drop simultaneously from opposite sides, creating score jellies. Moderate scoring output with easy positioning.',
     upgradePriority: 'A decent bridge pet before unlocking S-tier score pets. Do not take past level 5.',
     image: '/images/pets/bean-drop-duo.webp',
@@ -608,6 +616,7 @@ export const PET_TIERS: PetTier[] = [
     pairedCookie: 'Coffee Cookie / Any Speed Cookie',
     bestFor: 'Energy refills during speed-focused runs',
     bestForTh: 'เติมพลังงานตอนวิ่งสายความเร็ว',
+    bestForThExtra: 'เหมาะกับคุกกี้ที่ใช้พลังงานเปลืองเร็ว ถ้าคุกกี้ไม่ใช้พลังงานเยอะจะไม่ค่อยจำเป็น',
     earlyValue: 'Brews a mocha that restores a small amount of Energy when collected. Pairs naturally with Coffee Cookie for sustained speed runs.',
     upgradePriority: 'Invest if using Coffee or Ninja Cookie as your main runner. Otherwise skip.',
     image: '/images/pets/mocha-delight.webp',
